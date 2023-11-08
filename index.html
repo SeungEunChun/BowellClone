@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드 쇼 연습</title>
+    <!-- 바로가기(favicon) -> SEO 최적화 -> 광고추적기  -->
+    <!-- 폰트 -->
+    <!-- 초기화 -->
+    <!-- 공통클래스// 부트스트랩 -->
+    <!-- 플러그인 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- 내꺼 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;900&family=Roboto+Mono:ital,wght@1,100&display=swap');
+
+
+        #topad .container {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR';
+            font-weight: 400;
+        }
+
+
+        .darkbrown {
+            background-color: rgb(172, 68, 30);
+            text-align: center;
+        }
+
+
+
+        .darkbrown a {
+            line-height: 2.5;
+            color: white;
+            text-decoration: none;
+        }
+
+
+        #topad .swiper-pagination {
+            color: white;
+            right: 0;
+            left: unset;
+            width: auto;
+            bottom: unset;
+            top: 50%;
+            transform: translateY(-50%);
+            /* transform: translate3d (0,-50%,0) */
+            font-size: 0.9em;
+            font-weight: normal;
+        }
+
+        #hd {
+            height: 150px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .h600 {
+            height: 600px;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .rel {
+            position: relative;
+        }
+
+        .abs {
+            position: absolute;
+        }
+
+        #mainBanner .swiper-slide {
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            border: 1px solid black;
+
+
+        }
+
+        #mainBanner .swiper .container {
+            width: 1280px;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 1px;
+
+
+        }
+    </style>
+
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script>
+        //제이쿼리 스크립트들  제이쿼리 무거워!!!!!!
+    </script>
+</head>
+
+<body>
+    <header id="hd">
+        <div id="topad" class="darkbrown">
+            <div class="swiper container">
+
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide darkbrown">
+                        <a href="">멤버쉽특가 바로가기</a>
+                    </div>
+                    <div class="swiper-slide darkbrown">
+                        <a href="">구독혜택</a>
+                    </div>
+                    <div class="swiper-slide darkbrown">
+                        <a href="">신상품 바로가기</a>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+
+
+
+
+            </div>
+        </div>
+        <script>
+            //바닐라 스크립트들
+            //개별화
+            const swiperTop = new Swiper('#topad .swiper', {
+
+
+                loop: true,  //순한할때
+
+
+                pagination: {
+                    el: '#topad .swiper-pagination',  //페이지네이션 할 객체
+                    type: "fraction"
+                },
+                effect: "fade",
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                }
+
+
+
+
+
+            });
+        </script>
+        <div class="container">
+            <!-- 상단 컨텐츠 넣어주세요 퍼블님! -->
+        </div>
+    </header>
+    <div id="mainBanner">
+        <!-- 슬라이드9개 높이 600px -->
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+                <div class="swiper-slide">Slide 7</div>
+                <div class="swiper-slide">Slide 8</div>
+                <div class="swiper-slide">Slide 9</div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="container abs">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const swiper2 = new Swiper('#mainBanner .swiper', {
+
+
+            loop: true,
+
+            slidesPerView: 1.8,
+            spaceBetween: 0,
+            centeredSlides: true,
+            pagination: {
+                el: '#mainBanner .swiper-pagination',
+                type: "fraction",
+            },
+
+
+            navigation: {
+                nextEl: '#mainBanner .swiper-button-next',
+                prevEl: '#mainBanner .swiper-button-prev',
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            }
+
+
+        });
+    </script>
+
+
+</body>
+
+</html>
