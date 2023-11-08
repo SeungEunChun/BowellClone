@@ -17,13 +17,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;900&family=Roboto+Mono:ital,wght@1,100&display=swap');
 
 
-        #topad .container {
-            position: relative;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-
         body {
             margin: 0;
             padding: 0;
@@ -31,13 +24,10 @@
             font-weight: 400;
         }
 
-
         .darkbrown {
             background-color: rgb(172, 68, 30);
             text-align: center;
         }
-
-
 
         .darkbrown a {
             line-height: 2.5;
@@ -45,32 +35,11 @@
             text-decoration: none;
         }
 
-
-        #topad .swiper-pagination {
-            color: white;
-            right: 0;
-            left: unset;
-            width: auto;
-            bottom: unset;
-            top: 50%;
-            transform: translateY(-50%);
-            /* transform: translate3d (0,-50%,0) */
-            font-size: 0.9em;
-            font-weight: normal;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
-        #hd {
-            height: 150px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .h600 {
-            height: 600px;
-        }
-
-        .d-flex {
-            display: flex;
-        }
 
         .rel {
             position: relative;
@@ -80,6 +49,23 @@
             position: absolute;
         }
 
+        #topad .swiper-pagination {
+            text-align: right;
+            transform: translateY(-50%);
+            bottom: unset;
+            top: 50%;
+            left: unset;
+            right: 0;
+            width: auto;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        #hd {
+            height: 150px;
+            border-bottom: 1px solid #ccc;
+        }
+
         #mainBanner .swiper-slide {
             height: 600px;
             display: flex;
@@ -87,19 +73,67 @@
             align-items: center;
             font-size: 50px;
             border: 1px solid black;
+            background-color: yellow;
+            box-sizing: border-box;
+        }
 
+        #mainBanner {
+            overflow: hidden;
+        }
+
+        #mainBanner .swiper {
+            overflow: visible !important;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        #mainBanner .swiper-button-next::after,
+        #mainBanner .swiper-button-prev::after {
+            display: none;
+        }
+
+        #mainBanner .swiper-button-next,
+        #mainBanner .swiper-button-prev {
+            width: 5rem;
+            height: 5rem;
 
         }
 
-        #mainBanner .swiper .container {
-            width: 1280px;
-            margin: auto;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            height: 1px;
+        #mainBanner .swiper-button-next {
+            border-top: 1px solid red;
+            border-right: 1px solid red;
+            transform: rotate(45deg);
+            transform-origin: right;
+            right: 2rem;
 
+        }
+
+        #mainBanner .swiper-button-next:hover:before {
+            content: "next";
+            transform: rotate(-45deg);
+        }
+
+        #mainBanner .swiper-button-prev {
+            border-top: 1px solid red;
+            border-left: 1px solid red;
+            transform: rotate(-45deg);
+            transform-origin: left;
+            left: 2rem;
+        }
+
+        #mainBanner .swiper-button-prev:hover:before {
+            content: "prev";
+            transform: rotate(45deg);
+        }
+
+        #mainBanner .swiper-pagination-horizontal {
+            width: 200px;
+            left: 50%;
+            background-color: white;
+            border-radius: 50px;
+            transform: translateX(-50%);
 
         }
     </style>
@@ -118,13 +152,13 @@
             <div class="swiper container">
 
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide darkbrown">
+                    <div class="swiper-slide black">
                         <a href="">멤버쉽특가 바로가기</a>
                     </div>
-                    <div class="swiper-slide darkbrown">
+                    <div class="swiper-slide black">
                         <a href="">구독혜택</a>
                     </div>
-                    <div class="swiper-slide darkbrown">
+                    <div class="swiper-slide black">
                         <a href="">신상품 바로가기</a>
                     </div>
                 </div>
@@ -142,7 +176,7 @@
             const swiperTop = new Swiper('#topad .swiper', {
 
 
-                loop: true,  //순한할때
+                loop: true,  //순환할때
 
 
                 pagination: {
@@ -167,7 +201,7 @@
     </header>
     <div id="mainBanner">
         <!-- 슬라이드9개 높이 600px -->
-        <div class="swiper">
+        <div class="swiper container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">Slide 1</div>
                 <div class="swiper-slide">Slide 2</div>
@@ -180,11 +214,9 @@
                 <div class="swiper-slide">Slide 9</div>
             </div>
             <div class="swiper-pagination"></div>
-            <div class="container abs">
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
 
-            </div>
         </div>
     </div>
     <script>
@@ -193,9 +225,11 @@
 
             loop: true,
 
-            slidesPerView: 1.8,
-            spaceBetween: 0,
+
+            loopAdditionalSlides: 1,
             centeredSlides: true,
+            //첫 슬라이드 앞으로 마지막 슬라이드 복사해서 넣어주기
+
             pagination: {
                 el: '#mainBanner .swiper-pagination',
                 type: "fraction",
@@ -209,7 +243,7 @@
             autoplay: {
                 delay: 4000,
                 disableOnInteraction: false,
-            }
+            },
 
 
         });
